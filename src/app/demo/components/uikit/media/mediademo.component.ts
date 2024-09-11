@@ -52,11 +52,11 @@ export class MediaDemoComponent implements OnInit {
     constructor(private productService: ProductService, private photoService: PhotoService) { }
 
     ngOnInit() {
-        this.productService.getProductsSmall().then(products => {
+        this.productService.getProductsSmall().subscribe(products => {
             this.products = products;
         });
 
-        this.photoService.getImages().then(images => {
+        this.photoService.getImages().subscribe(images => {
             this.images = images;
         });
     }

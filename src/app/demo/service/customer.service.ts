@@ -1,30 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer } from '../api/customer';
+import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class CustomerService {
 
     constructor(private http: HttpClient) { }
 
-    getCustomersSmall() {
+    getCustomersSmall(): Observable<Customer[]> {
         return this.http.get<any>('assets/demo/data/customers-small.json')
-            .toPromise()
-            .then(res => res.data as Customer[])
-            .then(data => data);
+            .pipe(
+                map(res => res.data as Customer[])
+            );
     }
 
-    getCustomersMedium() {
+    getCustomersMedium(): Observable<Customer[]> {
         return this.http.get<any>('assets/demo/data/customers-medium.json')
-            .toPromise()
-            .then(res => res.data as Customer[])
-            .then(data => data);
+            .pipe(
+                map(res => res.data as Customer[])
+            );
     }
 
-    getCustomersLarge() {
+    getCustomersLarge(): Observable<Customer[]> {
         return this.http.get<any>('assets/demo/data/customers-large.json')
-            .toPromise()
-            .then(res => res.data as Customer[])
-            .then(data => data);
+            .pipe(
+                map(res => res.data as Customer[])
+            );
     }
 }

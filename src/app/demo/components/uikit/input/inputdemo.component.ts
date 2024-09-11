@@ -46,7 +46,7 @@ export class InputDemoComponent implements OnInit {
     constructor(private countryService: CountryService) { }
 
     ngOnInit() {
-        this.countryService.getCountries().then(countries => {
+        this.countryService.getCountries().subscribe(countries => {
             this.countries = countries;
         });
 

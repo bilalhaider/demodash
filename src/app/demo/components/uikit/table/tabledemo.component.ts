@@ -49,16 +49,16 @@ export class TableDemoComponent implements OnInit {
     constructor(private customerService: CustomerService, private productService: ProductService) { }
 
     ngOnInit() {
-        this.customerService.getCustomersLarge().then(customers => {
+        this.customerService.getCustomersLarge().subscribe(customers => {
             this.customers1 = customers;
             this.loading = false;
 
             // @ts-ignore
             this.customers1.forEach(customer => customer.date = new Date(customer.date));
         });
-        this.customerService.getCustomersMedium().then(customers => this.customers2 = customers);
-        this.customerService.getCustomersLarge().then(customers => this.customers3 = customers);
-        this.productService.getProductsWithOrdersSmall().then(data => this.products = data);
+        this.customerService.getCustomersMedium().subscribe(customers => this.customers2 = customers);
+        this.customerService.getCustomersLarge().subscribe(customers => this.customers3 = customers);
+        this.productService.getProductsWithOrdersSmall().subscribe(data => this.products = data);
 
         this.representatives = [
             { name: 'Amy Elsner', image: 'amyelsner.png' },

@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class CountryService {
 
     constructor(private http: HttpClient) { }
 
-    getCountries() {
+    getCountries(): Observable<any> {
+
         return this.http.get<any>('assets/demo/data/countries.json')
-            .toPromise()
-            .then(res => res.data as any[])
-            .then(data => data);
+            .pipe(
+                map(res => res.data as any[])
+            )
     }
 }
